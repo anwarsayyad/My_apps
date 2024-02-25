@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}My home{% endblock title %}
+
+{% block content %}
+  <h1>
+    you will find My apps here 
+  </h1>
+    <section>
+        <ul>
+          <li>  <a href = {% url "to-do-home" %}  >to do list </a> </li>
+        </ul>
+    </section>
+{% endblock content %}
+

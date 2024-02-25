@@ -387,7 +387,7 @@ To add and register templates in Django, you need to follow these steps:
    TEMPLATES = [
        {
            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-           'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add this line
+           'DIRS': BASE_DIR / "templates" ,  # Add this line
            'APP_DIRS': True,
            'OPTIONS': {
                # Other options...
