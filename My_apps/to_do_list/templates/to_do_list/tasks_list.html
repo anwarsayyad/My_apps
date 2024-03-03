@@ -13,7 +13,7 @@
     <h1>Tasks</h1>
        <ul>
         {% for task in tasks  %}
-            <li>{{task.task_name}}      {{task.due_date}}       {{created_on}}      {{created_by}} </li>
+            <li>{{task.task_name}}      {{task.due_date}}       {{task.created_on}}      {{task.created_by}} </li>
         {% endfor %}
         <ul>
 </section>
