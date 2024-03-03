@@ -5,14 +5,12 @@ To Do Home
 {% endblock title %}
 
 {% block content %}
+<header>
+  {% include "to_do_list/includes/nav_bar.html" %}
+</header>
 <h1> welcome to my To DO home page </h1> 
-  <section class = 'tasks'>
-    <h2> task list </h2>
-    <ul>
-     {% for task in tasks %}
-      <li>  {{task.task }}  {{ task.Due}} </li>
-     {% endfor %}
-    <ul>
+  <section class = "crete_user">
+    <h2> <a href = " {% url "create-task" %} "> Create Task </h2>
   </section>
 {% endblock content %}
 

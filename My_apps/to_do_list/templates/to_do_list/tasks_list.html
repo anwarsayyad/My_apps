@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+ Tasks List
+{% endblock title %}
+
+{% block content %}
+<header>
+    {% include "to_do_list/includes/nav_bar.html" %}
+</header>
+
+<section>
+    <h1>Tasks</h1>
+       <ul>
+        {% for task in tasks  %}
+            <li>{{task.task_name}}      {{task.due_date}}       {{created_on}}      {{created_by}} </li>
+        {% endfor %}
+        <ul>
+</section>
+{% endblock content %}
+

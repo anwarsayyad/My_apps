@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Create Task
+{% endblock title %}
+
+{% block content %}
+<header>
+    {% include "to_do_list/includes/nav_bar.html" %}
+</header>
+
+<form action = "/todo/create-task" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class = "farm-control">
+            {{field.label}}
+            {{ field }}
+    {% endfor %}
+    <button>Create</button>
+<form>
+
+{% endblock content %}
