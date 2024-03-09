@@ -21,7 +21,7 @@ class Register(CreateView):
     model = User
     form_class = UserRegisterForm
     template_name = 'baseapp/Register.html'
-    success_url = 'login-page'
+    success_url = 'accounts/login/'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
