@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+ User Registration
+{% endblock title %}
+
+{% block content %}
+<header>
+    {% include "baseapp/includes/navbar.html" %}
+</header>
+    <form action = "{% url "user-register" %}" method = "POST">
+        {% csrf_token %}
+        {% for form_field in form %}
+        <div>
+            {{form_field.label}}
+            {{form_field}}
+            {{form_field.errors}}
+        </div>
+
+        {% endfor %}
+
+    <button>Submit</button>
+    </form>
+{% endblock content %}

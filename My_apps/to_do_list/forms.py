@@ -6,7 +6,7 @@ from .models import Task
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        exclude = ["created_on"]
+        exclude = ["created_on",'created_by']
 
 
         

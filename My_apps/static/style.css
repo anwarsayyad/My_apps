@@ -9,22 +9,22 @@ body {
     color: #333;
 }
 
-.navbar {
+.navbar, .navbar-home {
     background-color: #333; /* Change this to your preferred color */
     overflow: hidden;
 }
 
-.navbar a {
+.navbar a , .navbar-home a {
     float: left;
     display: block;
     color: #f2f2f2; /* Text color */
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
-    font-size: 18px; /* Font size */
+    font-size: 20px; /* Font size */
 }
 
-.navbar a:hover {
+.navbar a:hover , .navbar-home a:hover{
     background-color: #ddd; /* Change this to your preferred color */
     color: black;
 }
@@ -32,4 +32,14 @@ body {
 .active {
     background-color: #4CAF50; /* Change this to your preferred color */
     color: white;
+}
+
+#logr {
+    float: right;
+    display: block;
+    color: #f2f2f2; /* Text color */
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 20px; /* Font size */
 }

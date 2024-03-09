@@ -1,8 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 To Do Home
 {% endblock title %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static "to_do_list/home.css" %}">
+{% endblock css_files %}
+
+
 
 {% block content %}
 <header>
@@ -10,8 +16,16 @@ To Do Home
 </header>
 <h1> welcome to my To DO home page </h1> 
   <section class = "crete_user">
-    <h2> <a href = " {% url "create-task" %} "> Create Task </h2>
   </section>
+
+<section class="section-card">
+  <h2>Currently in Progress Tasks</h2>
+  <ul>
+    {% for task in tasks %}
+    <li class="task-item">{{task.task_name}}</li>
+    {% endfor %}
+  </ul>
+</section>
 {% endblock content %}
 
 

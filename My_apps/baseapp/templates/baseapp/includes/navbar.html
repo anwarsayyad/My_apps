@@ -1,0 +1,6 @@
+<div class ="navbar-home">
+    <a class = "{% if active == 'me' %}active{% endif %}" id="home"  href = "{% url "about-me" %}"> Welcome </a>
+    <a class = "{% if active == 'log' %}active{% endif %}" id="logr" href="{% url "login" %}"> Login </a>
+    <a class = "{% if active == 'reg' %}active{% endif %}" id="logr"  href = " {% url "user-register" %} "> Register </a>
+    <a class = "{% if active == 'reg' %}active{% endif %}" id="logr"  href = " {% url "logout" %} "> Log out </a>
+</div>

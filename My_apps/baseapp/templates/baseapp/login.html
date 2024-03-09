@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+User login
+{% endblock title %}
+
+{% block content %}
+<header>
+    {% include "baseapp/includes/navbar.html" %}
+</header>
+    <form action="{% url "login" %}" method="POST">
+        {% csrf_token %}
+        <label>User Name</label>
+        <input type="text" name="username" id="username">
+        <input type="password" name="password" id="password">
+        <button type="submit">Login</button>
+    </form>
+    <a href="{% url "user-register" %}">Registration</a>
+{% endblock content %}

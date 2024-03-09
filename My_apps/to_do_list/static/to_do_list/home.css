@@ -1,0 +1,56 @@
+.section-card {
+    background-color:white;
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem 3rem;
+    max-width: 25rem;
+    width: 25%;
+    height: auto;
+}
+
+.section-card ul {
+    align-items: center;
+    max-width: 25rem;
+    width: 100%;
+    display: flex;
+    padding-left: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+.section-card h2 {
+    text-align: center;
+    font-size: 24px;
+    font-family: inherit;
+    margin-bottom: 20px;
+    
+}
+
+.section-card li {
+    list-style: none;
+    padding: 0;
+    width: fit-content;
+}
+
+.section-card li {
+    margin: 0 ;
+    text-align: center;
+    border-bottom: 1px solid #a39e9e;
+    padding: 3rem;
+    font-size: 1rem;
+    
+}
+
+.task-item:nth-child(odd){
+    background-color: #f9f9f9;
+}
+
+.task-item:nth-child(even){
+    background-color: #fff;
+}
+
+.task-item:last-child{
+    border-bottom: none;
+}
+
