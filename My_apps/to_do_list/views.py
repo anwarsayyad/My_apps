@@ -1,9 +1,5 @@
-from typing import Any
-from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView
-from django.template import RequestContext
-from django.urls import  reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
