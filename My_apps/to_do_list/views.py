@@ -12,11 +12,31 @@ from .models import Task
 def home(request):
     active_link = 'home'
     tasks = Task.objects.filter(created_by = request.user)
+    count = tasks.count()
+    working = tasks.filter(task_status= 'WorkingOn') | tasks.filter(task_status = 'Working_On')
+    working_c = working.count()
+    planned = tasks.filter(task_status='Planned')
+    planned_c = planned.count()
+    completed = tasks.filter(task_status = 'Completed')
+    completed_c = completed.count()
+    canceled = tasks.filter(task_status = 'Canceled')
+    canceled_c = canceled.count()
+    print(working_c)
     username = request.user.username
     print(username)
     return render(request, "to_do_list/home.html",{
         'active' :active_link,
-        'tasks':tasks
+        'tasks':tasks,
+        'total_task_count':count,
+        'working':working,
+        'working_c':working_c,
+        'planned':planned,
+        'planned_c':planned_c,
+        'completed':completed,
+        'completed_c':completed_c,
+        'canceled':canceled,
+        'canceled_c':canceled_c,
+        
     })
 
 class createTask(LoginRequiredMixin,CreateView):

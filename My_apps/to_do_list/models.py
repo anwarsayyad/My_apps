@@ -3,7 +3,7 @@ from django.conf import settings
 
 # Create your models here.
 
-status = models.TextChoices("Status", "WorkingOn Completed Canceled")
+status = models.TextChoices("Status", "Planned Working_On Completed Canceled")
 
 
 class Task(models.Model):

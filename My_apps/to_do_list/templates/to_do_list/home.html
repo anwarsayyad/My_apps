@@ -1,31 +1,84 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block title %}
+  To Do Home
+{% endblock %} {% block css_files %}
+  <link rel="stylesheet" href="{% static 'to_do_list/home.css' %}" />
+{% endblock %}h{% block content %}
+  <header>
+    {% include 'to_do_list/includes/nav_bar.html' %}
+  </header>
+  <h1 id="Overview">welcome to my To DO home page</h1>
+  <h2 id="Overview">Task Overview</h2>
+  <section class="maincard">
+    {% if total_task_count > 0 %}
+      <section class="section-card">
+        <h2>All Tasks</h2>
+        <ul>
+          {% for task in tasks %}
+            <li class="task-item">{{ task.task_name }}</li>
+          {% endfor %}
+        </ul>
+        <div>
+          <h2 class="total">Total count {{ total_task_count }}</h2>
+        </div>
+      </section>
+    {% else %}
+    <p>There is no task created</p>
+    {% endif %}
 
-{% block title %}
-To Do Home
-{% endblock title %}
-{% block css_files %}
-<link rel="stylesheet" href="{% static "to_do_list/home.css" %}">
-{% endblock css_files %}
+    {% if working_c > 0 %}
+      <section class="section-card">
+        <h2>In Porgress Tasks</h2>
+        <ul>
+          {% for work in working %}
+            <li class="task-item">{{ work.task_name }}</li>
+          {% endfor %}
+          <div>
+            <h2>Total count {{ working_c }}</h2>
+          </div>
+        </ul>
+      </section>
+    {% endif %}
 
+    {% if planned_c > 0 %}
+      <section class="section-card">
+        <h2>Planned Tasks</h2>
+        <ul>
+          {% for plan in planned %}
+            <li class="task-item">{{ plan.task_name }}</li>
+          {% endfor %}
+        </ul>
+        <div>
+          <h2 class="total">Total count {{ planned_c }}</h2>
+        </div>
+      </section>
+    {% endif %}
 
+    {% if completed_c > 0 %}
+      <section class="section-card">
+        <h2>Completed Tasks</h2>
+        <ul>
+          {% for comp in completed %}
+            <li class="task-item">{{ comp.task_name }}</li>
+          {% endfor %}
+        </ul>
+        <div>
+          <h2 class="total">Total count {{ completed_c }}</h2>
+        </div>
+      </section>
+    {% endif %}
 
-{% block content %}
-<header>
-  {% include "to_do_list/includes/nav_bar.html" %}
-</header>
-<h1> welcome to my To DO home page </h1> 
-  <section class = "crete_user">
+    {% if canceled_c > 0 %}
+      <section class="section-card">
+        <h2>Canceled Tasks</h2>
+        <ul>
+          {% for can in canceled %}
+            <li class="task-item">{{ can.task_name }}</li>
+          {% endfor %}
+        </ul>
+        <div>
+          <h2 class="total">Total count {{ canceled_c }}</h2>
+        </div>
+      </section>
+    {% endif %}
   </section>
-
-<section class="section-card">
-  <h2>Currently in Progress Tasks</h2>
-  <ul>
-    {% for task in tasks %}
-    <li class="task-item">{{task.task_name}}</li>
-    {% endfor %}
-  </ul>
-</section>
-{% endblock content %}
-
-
+{% endblock %}

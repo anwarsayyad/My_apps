@@ -1,20 +1,32 @@
+.maincard {
+    background-color:white;
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(17, 1, 1, 0.1);
+    margin: 1rem 3rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#Overview {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 .section-card {
     background-color:white;
     border-radius: 12px;
     padding: 5px;
+    max-width: fit-content;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 1rem 3rem;
-    max-width: 25rem;
-    width: 25%;
-    height: auto;
+    margin: 1rem;
 }
 
 .section-card ul {
     align-items: center;
-    max-width: 25rem;
-    width: 100%;
     display: flex;
-    padding-left: 0;
+    padding-left: 0 auto;
     flex-direction: column;
     flex-wrap: wrap;
     
@@ -30,14 +42,13 @@
 .section-card li {
     list-style: none;
     padding: 0;
-    width: fit-content;
 }
 
 .section-card li {
     margin: 0 ;
     text-align: center;
     border-bottom: 1px solid #a39e9e;
-    padding: 3rem;
+    padding: 2rem;
     font-size: 1rem;
     
 }
@@ -54,3 +65,12 @@
     border-bottom: none;
 }
 
+.section-card:hover {
+    background-color: #fff;
+}
+
+/* .total {
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+} */
