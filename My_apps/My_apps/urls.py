@@ -16,10 +16,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from rest_framework import routers,serializers,viewsets
+from django.contrib.auth.models import User
 
+#Serializers define the API representaion
+class UserSerializers(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'username', 'email', 'is_staff']
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializers
+    
+router = routers.DefaultRouter()
+router.register(r'users',UserViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include("to_do_list.urls")),
-    path("",include("baseapp.urls"))
+    path("",include("baseapp.urls")),
+    path('api-auth/', include('rest_framework.urls')),
+    path("api/",include(router.urls)),
+    path('api/tasks/', include('to_do_list.api.urls'))
 ]

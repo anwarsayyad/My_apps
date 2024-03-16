@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'to_do_list',
     'baseapp',
     'django.contrib.admin',
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'My_apps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Myapp',
+        'USER':'postgres',
+        'PASSWORD':'1234',
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 
@@ -126,3 +131,8 @@ STATICFILES_DIRS =[
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+     'DEFAULT_PERMISSION_CLASSES' : [
+         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+     ]
+ }
