@@ -1,10 +1,12 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-from .forms import TaskForm
+from .forms import TaskForm,TaskFormKUpdateTask
 from .models import Task
 
 # Create your views here.
@@ -70,7 +72,14 @@ class TaskList(LoginRequiredMixin,ListView):
         return task.filter(created_by = self.request.user)
     
     
+class TaskUpdate(LoginRequiredMixin,CreateView):
+    model = Task
+    form_class = TaskFormKUpdateTask
+    success_url = "/"
     
+    
+    def get_queryset(self) -> QuerySet[Any]:
+        return super().get_queryset()
 
     # def get_queryset(self) -> QuerySet[Any]:
     #     base_query = super().get_queryset()

@@ -9,8 +9,9 @@ status = models.TextChoices("Status", "Planned Working_On Completed Canceled")
 class Task(models.Model):
     task_name = models.CharField(max_length=200,unique=True)
     due_date = models.DateField(null = True)
-    task_status = models.CharField(max_length = 200,choices=status.choices)
+    task_status = models.CharField(max_length = 200,choices=status.choices, default = 'Planned')
     created_on = models.DateTimeField(auto_now = True)
+    scheduled = models.DateTimeField(null = True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE, null=True)
     
 

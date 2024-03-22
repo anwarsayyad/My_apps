@@ -24,19 +24,20 @@ from to_do_list.api.views import TaskViewset
 class UserSerializers(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        fields = ['url', 'username', 'email','is_staff']
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializers
     
 router = routers.DefaultRouter()
-router.register(r'posts',TaskViewset)
+router.register(r'tasks',TaskViewset,basename='taskapi')
+router.register(r'users',UserViewSet,basename='usersapi')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include("to_do_list.urls")),
     path("",include("baseapp.urls")),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/',include(router.urls)),
+    path('api/', include(router.urls)),
     path('api/custom/', include('to_do_list.api.urls'))
 ]
