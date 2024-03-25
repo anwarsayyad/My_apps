@@ -3,10 +3,10 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics, renderers
 from rest_framework import viewsets
-from to_do_list.models import Task
-from to_do_list.api.serializer import TaskSerializer
+from to_do_list.models import Task,Project,TeamMember
+from to_do_list.api.serializer import TaskSerializer, ProjectSerializer, TeamMemeberSerializers
 from rest_framework import permissions
-from to_do_list.api.permission import IsOwnerOrReadOnly
+from to_do_list.api.permission import IsOwnerOrReadOnly,IsAssigneeorTeammaberOrOwner
 
 
 
@@ -44,9 +44,20 @@ class StatusTask(generics.ListAPIView):
 class TaskViewset(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsAssigneeorTeammaberOrOwner]
     
     def perform_create(self, serializer):
         serializer.save(created_by = self.request.user)
+    
+class ProjectViewset(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+    def perform_create(self, serializer):
+        serializer.save(created_by = self.request.user)
+class TeamMemberViweset(viewsets.ModelViewSet):
+    queryset = TeamMember.objects.all()
+    serializer_class = TeamMemeberSerializers
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     

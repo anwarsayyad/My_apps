@@ -136,3 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #          'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 #      ]
 #  }
+
+MEDIA_ROOT = BASE_DIR / 'Attachements'
+
+MEDIA_URL = '/Attachements/'

@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers,serializers,viewsets
 from django.contrib.auth.models import User
-from to_do_list.api.views import TaskViewset
+from to_do_list.api.views import TaskViewset, TeamMemberViweset, ProjectViewset
+from django.conf import settings
+from django.conf.urls.static import static
 
 #Serializers define the API representaion
 class UserSerializers(serializers.HyperlinkedModelSerializer):
@@ -32,12 +34,15 @@ class UserViewSet(viewsets.ModelViewSet):
     
 router = routers.DefaultRouter()
 router.register(r'tasks',TaskViewset,basename='taskapi')
-router.register(r'users',UserViewSet,basename='usersapi')
+router.register(r'users',UserViewSet)
+router.register(r'project',ProjectViewset,basename='projectapi')
+router.register(r'teams',TeamMemberViweset,basename='teammembers')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include("to_do_list.urls")),
     path("",include("baseapp.urls")),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/', include(router.urls)),
+    path('api/', include(router.urls),name='api-root'),
     path('api/custom/', include('to_do_list.api.urls'))
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

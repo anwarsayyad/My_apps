@@ -53,7 +53,7 @@ class Login(View):
         user = authenticate(request,username = username,password = password)
         if user is not None:
             login(request,user)
-            return redirect('my-app-home')
+            return redirect('api-root')
         else:
             return redirect('user-register')
     
