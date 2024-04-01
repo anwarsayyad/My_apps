@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers,serializers,viewsets
 from django.contrib.auth.models import User
-from to_do_list.api.views import TaskViewset, TeamMemberViweset, ProjectViewset
+from to_do_list.api.views import TaskViewset, TeamMemberViweset, ProjectViewset, CommentsViewSet
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -37,6 +37,7 @@ router.register(r'tasks',TaskViewset,basename='taskapi')
 router.register(r'users',UserViewSet)
 router.register(r'project',ProjectViewset,basename='projectapi')
 router.register(r'teams',TeamMemberViweset,basename='teammembers')
+router.register(r'comments',CommentsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -15,3 +15,8 @@ class TeamMemeberSerializers(serializers.ModelSerializer):
     class Meta:
         model = TeamMember
         fields = '__all__'
+        
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comments
+        fields = '__all__'

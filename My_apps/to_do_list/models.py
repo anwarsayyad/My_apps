@@ -50,11 +50,12 @@ class Task(models.Model):
     
 class Comments(models.Model):
     Comments = models.TextField()
-    attachement = models.FileField( upload_to=None, max_length=100)
+    attachement = models.FileField( upload_to='Tasks_app', max_length=100)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE, null=True)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     
-
+    def __str__(self):
+        return f'{self.Comments} {self.task} {self.created_by}'
     class Meta:
         verbose_name = ("Comments")
         verbose_name_plural = ("Commentss")

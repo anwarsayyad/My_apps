@@ -3,8 +3,8 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics, renderers
 from rest_framework import viewsets
-from to_do_list.models import Task,Project,TeamMember
-from to_do_list.api.serializer import TaskSerializer, ProjectSerializer, TeamMemeberSerializers
+from to_do_list.models import Task,Project,TeamMember, Comments
+from to_do_list.api.serializer import TaskSerializer, ProjectSerializer, TeamMemeberSerializers, CommentSerializer
 from rest_framework import permissions
 from to_do_list.api.permission import IsOwnerOrReadOnly,IsAssigneeorTeammaberOrOwner
 
@@ -61,3 +61,9 @@ class TeamMemberViweset(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     
+class CommentsViewSet(viewsets.ModelViewSet):
+    queryset = Comments.objects.all()
+    serializer_class = CommentSerializer
+    
+    def perform_create(self, serializer):
+        serializer.save(created_by = self.request.user)

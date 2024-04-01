@@ -16,4 +16,4 @@ class IsAssigneeorTeammaberOrOwner(permissions.BasePermission):
            team = TeamMember.objects.filter(project = obj.project)
            final = team.filter(user = request.user).exists()
            print(final)
-        return obj.assigned_to == request.user or final
+        return obj.assigned_to == request.user or final or obj.created_by == request.user
