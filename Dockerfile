@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /My_apps
 
 # Install system dependencies
 RUN apt-get update \
@@ -16,11 +16,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirements.txt /app/
+COPY requirements.txt /My_apps/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Django project files into the container
-COPY . /app/
+COPY . /My_apps/
 
 # Expose the port on which the Django app will run (if needed)
 # EXPOSE 8000
